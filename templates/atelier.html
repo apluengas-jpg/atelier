@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import artist_card %}
+{% block title %}Sobre Atelier{% endblock %}
+
+{% block content %}
+<section class="shell manifesto">
+  <h1 class="display manifesto__title">{{ site.statement_title }}</h1>
+  <div class="manifesto__side">
+    <p class="prose__lead">{{ site.statement }}</p>
+    <ul class="tags tags--lg">{% for d in site.disciplines %}<li>{{ d }}</li>{% endfor %}</ul>
+  </div>
+</section>
+
+<section class="shell section" aria-labelledby="pilares">
+  <h2 class="h2" id="pilares">Tres piezas, una conexión</h2>
+  <div class="pillars">
+    {% for p in site.pillars %}
+    <div class="pillar pillar--{{ p.tone }}">
+      <h3 class="pillar__title">{{ p.title }}</h3>
+      <p>{{ p.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="equation equation--dark" aria-label="Artistas más espacios más eventos igual a oportunidades">
+    <span>Artistas</span><b>+</b><span>Espacios</span><b>+</b><span>Eventos</span><b>=</b><span class="equation__res">Oportunidades</span>
+  </p>
+</section>
+
+<section class="shell section" aria-labelledby="como">
+  <h2 class="h2" id="como">Cómo trabajamos</h2>
+  <div class="how">
+    {% for h in site.how %}
+    <div class="how__item"><h3 class="h4">{{ h.title }}</h3><p>{{ h.text }}</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="rep">
+  <div class="shell">
+    <div class="section__head">
+      <div><h2 class="h2" id="rep">Talento que representamos</h2><p class="sub">Una muestra de quienes ya forman parte.</p></div>
+      <a class="textlink" href="{{ url_for('artistas') }}">Ver todos {{ icon('arrow', 18) }}</a>
+    </div>
+    <div class="agrid">{% for a in artists %}{{ artist_card(a) }}{% endfor %}</div>
+  </div>
+</section>
+
+<section class="shell section">
+  <div class="closing">
+    <h2 class="display closing__title">Hagamos que suceda.</h2>
+    <p class="closing__text">Si haces arte, tienes un espacio o quieres proponer algo distinto, cuéntanos. Escríbenos a {{ site.contact.email }} o usa uno de estos botones.</p>
+    <div class="closing__actions">
+      <button class="btn js-collab" type="button" data-mode="join">Quiero formar parte</button>
+      <button class="btn btn--ghost js-collab" type="button" data-mode="propose">Proponer una colaboración</button>
+    </div>
+  </div>
+</section>
+{% endblock %}

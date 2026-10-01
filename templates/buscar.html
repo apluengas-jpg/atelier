@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import event_card, artist_card, space_card %}
+{% block title %}Buscar{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">{% if q %}Resultados para “{{ q }}”{% else %}Buscar{% endif %}</h1>
+  <form class="hero__search hero__search--page" action="{{ url_for('buscar') }}" role="search">
+    {{ icon('search', 20) }}
+    <input type="search" name="q" value="{{ q }}" placeholder="Artistas, lugares, eventos" aria-label="Buscar en Atelier">
+    <button class="btn btn--sm" type="submit">Buscar</button>
+  </form>
+</section>
+
+<section class="shell">
+  {% if q and not (results.events or results.artists or results.spaces) %}
+    <p class="empty">No encontramos nada para “{{ q }}”. Prueba con una disciplina (graffiti, música) o el nombre de un lugar.</p>
+  {% endif %}
+
+  {% if results.events %}
+  <h2 class="h3 result-h">Eventos</h2>
+  <div class="egrid egrid--3">{% for e in results.events %}{{ event_card(e) }}{% endfor %}</div>
+  {% endif %}
+  {% if results.artists %}
+  <h2 class="h3 result-h">Artistas</h2>
+  <div class="agrid agrid--list">{% for a in results.artists %}{{ artist_card(a) }}{% endfor %}</div>
+  {% endif %}
+  {% if results.spaces %}
+  <h2 class="h3 result-h">Espacios</h2>
+  <div class="sgrid sgrid--list">{% for s in results.spaces %}{{ space_card(s) }}{% endfor %}</div>
+  {% endif %}
+</section>
+{% endblock %}

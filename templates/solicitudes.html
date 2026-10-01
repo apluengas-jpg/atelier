@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Solicitudes de la beta{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Solicitudes</h1>
+  <p class="lead">Aquí llegan las propuestas enviadas desde los formularios de la beta. Esta vista es solo para pruebas locales.</p>
+</section>
+<section class="shell">
+  {% if not items %}
+    <p class="empty">Aún no hay solicitudes. Envía una desde “Quiero colaborar” o “Proponer una colaboración”.</p>
+  {% else %}
+  <div class="tablewrap">
+    <table class="table">
+      <thead><tr><th>Fecha</th><th>Tipo</th><th>Nombre</th><th>Contacto</th><th>Rol</th><th>Destino</th><th>Mensaje</th></tr></thead>
+      <tbody>
+        {% for r in items %}
+        <tr><td>{{ r.creada }}</td><td>{{ r.modo }}</td><td>{{ r.nombre }}</td><td>{{ r.contacto }}</td><td>{{ r.rol }}</td><td>{{ r.destino }}</td><td>{{ r.mensaje }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

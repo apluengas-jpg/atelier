@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import chip, event_card %}
+{% block title %}{{ e.title }}{% endblock %}
+
+{% block content %}
+<article class="shell detail" style="--c: {{ e.category_info.color }}">
+  <a class="backlink" href="{{ url_for('eventos') }}">{{ icon('arrow', 18) }}<span>Todos los eventos</span></a>
+
+  <div class="detail__grid">
+    <figure class="detail__photo detail__photo--arch">
+      <img src="{{ img(e.image, e.category, e.slug) }}" alt="Imagen del evento {{ e.title }}">
+    </figure>
+
+    <div class="detail__info">
+      {{ chip(e.category_info.label ~ ', ' ~ e.format, e.category_info.color) }}
+      <h1 class="display detail__title">{{ e.title }}</h1>
+
+      <dl class="facts">
+        <div>{{ icon('calendar') }}<dt>Fecha</dt><dd>{{ e.date|fecha_larga }}</dd></div>
+        <div>{{ icon('clock') }}<dt>Hora</dt><dd>{{ e.time|hora }}</dd></div>
+        <div>{{ icon('pin') }}<dt>Ubicación</dt><dd>{{ e.space_obj.name }}, {{ e.space_obj.address }}</dd></div>
+        <div>{{ icon('users') }}<dt>Acceso</dt><dd>{{ e.access }}</dd></div>
+      </dl>
+
+      <div class="actions">
+        <button class="btn js-save js-save--label" type="button" data-slug="{{ e.slug }}" aria-pressed="false">
+          {{ icon('bookmark', 20) }}<span data-label>Guardar evento</span>
+        </button>
+        <a class="btn btn--ghost" href="{{ url_for('mapa', foco='event:' ~ e.slug) }}">{{ icon('pin', 20) }}Ver en mapa</a>
+        <button class="btn btn--ghost js-share" type="button" data-title="{{ e.title }}" data-text="{{ e.title }} en {{ e.space_obj.name }}, {{ e.date|fecha_larga }}">{{ icon('share', 20) }}Compartir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail__body">
+    <div class="prose">
+      <p class="prose__lead">{{ e.description }}</p>
+    </div>
+    <div class="duo">
+      <a class="mini mini--artist" href="{{ url_for('artista', slug=e.artist) }}" style="--c: {{ e.artist_obj.category_info.color }}">
+        <span class="mini__img"><img src="{{ img(e.artist_obj.image, e.artist_obj.category, e.artist_obj.slug) }}" alt=""></span>
+        <span class="mini__txt">
+          <span class="mini__label">Artista</span>
+          <span class="mini__name">{{ e.artist_obj.name }}</span>
+          <span class="mini__sub">{{ e.artist_obj.discipline }} / {{ e.artist_obj.style }}</span>
+        </span>
+      </a>
+      <a class="mini mini--space" href="{{ url_for('espacio', slug=e.space) }}" style="--c: {{ e.space_obj.category_info.color }}">
+        <span class="mini__img"><img src="{{ img(e.space_obj.image, 'espacio', e.space_obj.slug) }}" alt=""></span>
+        <span class="mini__txt">
+          <span class="mini__label">Espacio</span>
+          <span class="mini__name">{{ e.space_obj.name }}</span>
+          <span class="mini__sub">{{ e.space_obj.type }}, {{ e.space_obj.address }}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="detail__map">
+    <h2 class="h3">Cómo llegar</h2>
+    <div class="mapstage mapstage--strip" data-map data-open data-endpoint="{{ url_for('api_puntos', only='event:' ~ e.slug) }}" data-zoom="16" data-wheel="off">
+      <div class="mapstage__canvas"></div>
+      <article class="mapcard" hidden></article>
+    </div>
+    <a class="textlink" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat={{ e.lat }}&mlon={{ e.lng }}#map=17/{{ e.lat }}/{{ e.lng }}">Abrir ubicación en un mapa externo {{ icon('external', 16) }}</a>
+  </div>
+</article>
+
+{% if more %}
+<section class="shell section" aria-labelledby="mas">
+  <div class="section__head"><h2 class="h2" id="mas">Más para descubrir</h2></div>
+  <div class="egrid egrid--3">{% for x in more %}{{ event_card(x) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='vendor/leaflet/leaflet.css') }}">{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/leaflet/leaflet.js') }}"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+{% endblock %}

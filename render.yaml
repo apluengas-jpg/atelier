@@ -1,0 +1,10 @@
+# Blueprint opcional para Render. En el dashboard: New + > Blueprint > selecciona
+# este repositorio, y Render configura el servicio automáticamente con esto.
+# Si prefieres hacerlo a mano, usa "New + > Web Service" y sigue el README.
+services:
+  - type: web
+    name: atelier
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app

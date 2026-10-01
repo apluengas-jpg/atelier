@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% block title %}Comentarios de la beta{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Comentarios</h1>
+  <p class="lead">Opiniones dejadas desde el botón “Danos tu opinión”. Esta vista es solo para pruebas locales.</p>
+  {% if n %}
+  <p class="ratingavg">{{ icon('star', 22) }}<b>{{ avg }}</b> de 5 · {{ n }} comentario{{ 's' if n != 1 }}</p>
+  {% endif %}
+</section>
+<section class="shell">
+  {% if not items %}
+    <p class="empty">Aún no hay comentarios. Usa el botón flotante para dejar el primero.</p>
+  {% else %}
+  <div class="fblist">
+    {% for r in items %}
+    <article class="fbcard">
+      <div class="fbcard__head">
+        <span class="fbcard__stars" aria-label="{{ r.calificacion }} de 5 estrellas">
+          {% for i in range(5) %}{{ icon('star', 15) }}{% endfor %}
+          <span class="fbcard__fill" style="width:{{ r.calificacion * 20 }}%">{% for i in range(5) %}{{ icon('star', 15) }}{% endfor %}</span>
+        </span>
+        <span class="fbcard__meta">{{ r.creada }}{% if r.pagina %} · {{ r.pagina }}{% endif %}</span>
+      </div>
+      <p class="fbcard__msg">{{ r.mensaje }}</p>
+      {% if r.nombre %}<p class="fbcard__name">{{ r.nombre }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

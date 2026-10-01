@@ -1,0 +1,7 @@
+Coloca aquí tus fotografías reales (jpg, png, webp).
+Después, en los archivos de /data, escribe la ruta relativa a /static, por ejemplo:
+
+    "image": "images/lia-torres.jpg"
+
+Si "image" es null, ATELIER genera una ilustración demo automáticamente.
+También puedes usar una URL completa: "image": "https://..."

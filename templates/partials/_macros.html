@@ -1,0 +1,63 @@
+{# Componentes reutilizables: chips y tarjetas de evento, artista y espacio #}
+{% from 'partials/_icons.html' import icon %}
+
+{% macro chip(label, color) -%}
+<span class="chip" style="--c: {{ color }}"><i class="chip__dot"></i>{{ label }}</span>
+{%- endmacro %}
+
+{# Tarjeta de evento. variant: '' (vertical), 'hero' (imagen completa con texto encima), 'wide' (imagen a la izquierda) #}
+{% macro event_card(e, variant='') %}
+<article class="ecard {{ 'ecard--' ~ variant if variant }} js-item" data-cat="{{ e.category }}"
+         data-search="{{ (e.title ~ ' ' ~ e.format ~ ' ' ~ e.artist_obj.name ~ ' ' ~ e.space_obj.name ~ ' ' ~ e.category_info.label)|norm }}"
+         style="--c: {{ e.category_info.color }}">
+  <a class="ecard__media" href="{{ url_for('evento', slug=e.slug) }}" aria-label="Ver evento: {{ e.title }}">
+    <img src="{{ img(e.image, e.category, e.slug) }}" alt="" loading="lazy">
+    <span class="chip chip--float"><i class="chip__dot"></i>{{ e.category_info.label }}</span>
+  </a>
+  <div class="ecard__body">
+    <p class="ecard__date">{{ e.date|fecha_corta }}, {{ e.time|hora }}</p>
+    <h3 class="ecard__title"><a href="{{ url_for('evento', slug=e.slug) }}">{{ e.title }}</a></h3>
+    <p class="ecard__place">{{ e.space_obj.name }}, {{ e.space_obj.address }}</p>
+  </div>
+  <button class="save-btn js-save" type="button" data-slug="{{ e.slug }}" aria-pressed="false" aria-label="Guardar evento: {{ e.title }}">
+    {{ icon('bookmark', 20) }}
+  </button>
+</article>
+{% endmacro %}
+
+{# Tarjeta de artista con ventana en arco #}
+{% macro artist_card(a) %}
+<article class="acard js-item" data-cat="{{ a.category }}"
+         data-search="{{ (a.name ~ ' ' ~ a.discipline ~ ' ' ~ a.style ~ ' ' ~ a.tagline)|norm }}"
+         style="--c: {{ a.category_info.color }}">
+  <a class="acard__media" href="{{ url_for('artista', slug=a.slug) }}" aria-label="Ver perfil de {{ a.name }}">
+    <img src="{{ img(a.image, a.category, a.slug) }}" alt="" loading="lazy">
+  </a>
+  <div class="acard__body">
+    <p class="acard__disc"><i class="chip__dot"></i>{{ a.discipline }} / {{ a.style }}</p>
+    <h3 class="acard__name"><a href="{{ url_for('artista', slug=a.slug) }}">{{ a.name }}</a></h3>
+    <p class="acard__tag">{{ a.tagline }}</p>
+    <button class="btn btn--soft btn--sm js-collab" type="button" data-mode="collab" data-artist="{{ a.slug }}">Quiero colaborar</button>
+  </div>
+</article>
+{% endmacro %}
+
+{# Tarjeta de espacio #}
+{% macro space_card(s, big=false) %}
+<article class="scard {{ 'scard--big' if big }} js-item" data-cat="{{ s.type|norm }}"
+         data-search="{{ (s.name ~ ' ' ~ s.type ~ ' ' ~ s.address ~ ' ' ~ s.collab_types|join(' '))|norm }}"
+         style="--c: {{ s.category_info.color }}">
+  <a class="scard__media" href="{{ url_for('espacio', slug=s.slug) }}" aria-label="Ver espacio: {{ s.name }}">
+    <img src="{{ img(s.image, 'espacio', s.slug) }}" alt="" loading="lazy">
+    <span class="chip chip--float"><i class="chip__dot"></i>{{ s.type }}</span>
+  </a>
+  <div class="scard__body">
+    <h3 class="scard__name"><a href="{{ url_for('espacio', slug=s.slug) }}">{{ s.name }}</a></h3>
+    <p class="scard__meta">{{ icon('pin', 16) }}{{ s.address }}<span class="scard__sep"></span>{{ icon('users', 16) }}Hasta {{ s.capacity }} personas</p>
+    <ul class="tags">
+      {% for t in s.collab_types %}<li>{{ t }}</li>{% endfor %}
+    </ul>
+    <button class="btn btn--soft btn--sm js-collab" type="button" data-mode="propose" data-space="{{ s.slug }}">Proponer una colaboración</button>
+  </div>
+</article>
+{% endmacro %}

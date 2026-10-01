@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import chip, event_card %}
+{% block title %}{{ a.name }}{% endblock %}
+
+{% block content %}
+<article class="shell detail" style="--c: {{ a.category_info.color }}">
+  <a class="backlink" href="{{ url_for('artistas') }}">{{ icon('arrow', 18) }}<span>Todos los artistas</span></a>
+
+  <header class="profile">
+    <figure class="profile__photo">
+      <img src="{{ img(a.image, a.category, a.slug) }}" alt="Imagen de {{ a.name }}">
+    </figure>
+    <div class="profile__info">
+      {{ chip(a.discipline ~ ' / ' ~ a.style, a.category_info.color) }}
+      <h1 class="display profile__name">{{ a.name }}</h1>
+      <p class="prose__lead">{{ a.tagline }}</p>
+      <div class="actions">
+        <button class="btn js-collab" type="button" data-mode="collab" data-artist="{{ a.slug }}">Quiero colaborar</button>
+        <a class="btn btn--ghost" href="{{ url_for('mapa') }}">{{ icon('pin', 20) }}Ver en el mapa</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="detail__body detail__body--profile">
+    <section class="prose" aria-labelledby="bio">
+      <h2 class="h3" id="bio">Biografía</h2>
+      <p>{{ a.bio }}</p>
+      <h2 class="h3">Contacto y colaboración</h2>
+      <ul class="contact">
+        <li>{{ icon('at', 20) }}{{ a.contact.instagram }}</li>
+        <li>{{ icon('mail', 20) }}{{ a.contact.via }}</li>
+      </ul>
+    </section>
+    <section class="projects" aria-labelledby="proy">
+      <h2 class="h3" id="proy">Proyectos</h2>
+      {% for p in a.projects %}
+      <div class="project">
+        <span class="project__year">{{ p.year }}</span>
+        <div><h3 class="project__title">{{ p.title }}</h3><p>{{ p.text }}</p></div>
+      </div>
+      {% endfor %}
+    </section>
+  </div>
+
+  <section class="section-in" aria-labelledby="port">
+    <h2 class="h2" id="port">Portafolio</h2>
+    <div class="gallery">
+      {% for w in a.portfolio %}
+      <button class="gallery__item js-zoom" type="button" data-title="{{ w.title }}"
+              data-src="{{ img(w.image, a.category, a.slug ~ '-' ~ loop.index) }}">
+        <img src="{{ img(w.image, a.category, a.slug ~ '-' ~ loop.index) }}" alt="{{ w.title }}" loading="lazy">
+        <span class="gallery__cap">{{ w.title }}</span>
+      </button>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% if events %}
+  <section class="section-in" aria-labelledby="ev">
+    <h2 class="h2" id="ev">Próximos eventos de {{ a.name }}</h2>
+    <div class="egrid egrid--3">{% for e in events %}{{ event_card(e) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

@@ -1,0 +1,27 @@
+{# Iconos de línea reutilizables: {{ icon('mapa') }} #}
+{% macro icon(name, size=22) -%}
+<svg class="ic" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{%- if name == 'inicio' -%}<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>
+{%- elif name == 'mapa' -%}<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>
+{%- elif name == 'artistas' -%}<path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.3-4-7.8-9-7.8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/>
+{%- elif name == 'espacios' -%}<path d="M5 21V10a7 7 0 0 1 14 0v11"/><path d="M3 21h18"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/>
+{%- elif name == 'atelier' -%}<path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/>
+{%- elif name == 'search' -%}<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+{%- elif name == 'bookmark' -%}<path d="M6.5 3.5h11v17L12 16.8 6.5 20.5z"/>
+{%- elif name == 'share' -%}<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.6M8.2 13.2l7.6 4.6"/>
+{%- elif name == 'pin' -%}<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>
+{%- elif name == 'calendar' -%}<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/>
+{%- elif name == 'clock' -%}<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+{%- elif name == 'arrow' -%}<path d="M5 12h14M13 6l6 6-6 6"/>
+{%- elif name == 'close' -%}<path d="M6 6l12 12M18 6 6 18"/>
+{%- elif name == 'check' -%}<path d="M5 12.5l4.5 4.5L19 7.5"/>
+{%- elif name == 'users' -%}<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.5a6 6 0 0 1 3 5.5"/>
+{%- elif name == 'mail' -%}<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>
+{%- elif name == 'at' -%}<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>
+{%- elif name == 'external' -%}<path d="M14 4h6v6M20 4 10 14M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>
+{%- elif name == 'ticket' -%}<path d="M4 8.5a2 2 0 0 0 0 4v0a2 2 0 0 1 0 0V16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3.5a2 2 0 0 1 0-4V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1z"/><path d="M14 5v12" stroke-dasharray="2 2.5"/>
+{%- elif name == 'comment' -%}<path d="M4 5.5h16v11H9l-4 3.5v-3.5H4z"/>
+{%- elif name == 'star' -%}<path d="m12 3.5 2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/>
+{%- endif -%}
+</svg>
+{%- endmacro %}

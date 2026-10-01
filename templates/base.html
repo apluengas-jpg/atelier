@@ -1,0 +1,132 @@
+{% from 'partials/_icons.html' import icon %}
+{% set nav = [('inicio', 'Inicio', 'home'), ('mapa', 'Mapa', 'mapa'), ('artistas', 'Artistas', 'artistas'),
+              ('espacios', 'Espacios', 'espacios'), ('atelier', 'Atelier', 'atelier')] %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}Atelier{% endblock %} | Atelier, el arte también tiene un mapa</title>
+  <meta name="description" content="Atelier es el mapa cultural de Metepec: eventos, artistas y espacios que impulsan el arte.">
+  <meta name="theme-color" content="#F6F4F0">
+
+  {# Tipografías: Fraunces (títulos) y Hanken Grotesk (textos). Para cambiarlas, edita esta línea y las variables --f-display / --f-text en style.css #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {# Los colores de categoría vienen de data/categories.json: una sola fuente para CSS y mapa #}
+  <style>:root{ {% for key, c in categories.items() %}--c-{{ key }}: {{ c.color }}; {% endfor %} }</style>
+  {% block head %}{% endblock %}
+</head>
+<body class="sec-{{ section|default('inicio') }}">
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  {% if show_demo_bar %}
+  <div class="demobar" id="demobar" hidden>
+    <p>Beta de Atelier. Los artistas, espacios y eventos son contenido demo.</p>
+    <button type="button" class="demobar__x" data-dismiss-demo aria-label="Cerrar aviso">{{ icon('close', 16) }}</button>
+  </div>
+  {% endif %}
+
+  <header class="topbar">
+    <div class="shell topbar__in">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="Atelier, ir al inicio">
+        <span class="brand__word">atelier</span><svg class="brand__pin" viewBox="0 0 24 30" aria-hidden="true"><path d="M12 29C12 29 22 19 22 11a10 10 0 0 0-20 0c0 8 10 18 10 18z"/><circle cx="12" cy="11" r="3.6"/></svg>
+      </a>
+      <nav class="topnav" aria-label="Secciones">
+        {% for key, label, endpoint in nav %}
+        <a href="{{ url_for(endpoint) }}" {% if section == key %}aria-current="page"{% endif %}>{{ label }}</a>
+        {% endfor %}
+      </nav>
+      <div class="topbar__actions">
+        <button class="icon-btn js-open-search" type="button" aria-label="Buscar">{{ icon('search') }}</button>
+        <button class="icon-btn js-open-saved" type="button" aria-label="Eventos guardados">
+          {{ icon('bookmark') }}<span class="badge" data-saved-count hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__in">
+      <div class="footer__brand">
+        <p class="footer__claim">{{ site.concept }}</p>
+        <p class="footer__small">Agencia de representación artística. Pintura, graffiti, artes plásticas y música en {{ site.contact.city }}.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explorar</h4>
+        <a href="{{ url_for('mapa') }}">Mapa cultural</a>
+        <a href="{{ url_for('eventos') }}">Eventos</a>
+        <a href="{{ url_for('artistas') }}">Artistas</a>
+        <a href="{{ url_for('espacios') }}">Espacios</a>
+      </div>
+      <div class="footer__col">
+        <h4>Participa</h4>
+        <button type="button" class="linkbtn js-collab" data-mode="join">Soy artista y quiero formar parte</button>
+        <button type="button" class="linkbtn js-collab" data-mode="propose">Tengo un espacio y quiero colaborar</button>
+        <a href="{{ url_for('atelier') }}">Sobre Atelier</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <p>{{ site.contact.email }}</p>
+        <p>{{ site.contact.instagram }}</p>
+        <button type="button" class="linkbtn js-open-feedback">Danos tu opinión</button>
+        <a href="{{ url_for('solicitudes') }}" class="footer__muted">Ver solicitudes (beta)</a>
+        <a href="{{ url_for('comentarios') }}" class="footer__muted">Ver comentarios (beta)</a>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Navegación principal">
+    {% for key, label, endpoint in nav %}
+    <a href="{{ url_for(endpoint) }}" {% if section == key %}aria-current="page"{% endif %}>
+      <span class="tabbar__ic">{{ icon(key, 22) }}</span><span class="tabbar__lb">{{ label }}</span>
+    </a>
+    {% endfor %}
+  </nav>
+
+  <button type="button" class="fab js-open-feedback" aria-label="Danos tu opinión">{{ icon('comment', 22) }}</button>
+
+  {# Diálogos: el contenido lo construye app.js #}
+  <dialog id="dlg-collab" class="sheet sheet--center" aria-label="Formulario de colaboración"><div class="sheet__panel" id="collab-panel"></div></dialog>
+  <dialog id="dlg-feedback" class="sheet sheet--center" aria-label="Formulario de opinión"><div class="sheet__panel" id="feedback-panel"></div></dialog>
+
+  <dialog id="dlg-search" class="sheet sheet--top" aria-label="Buscar">
+    <div class="sheet__panel">
+      <form class="searchbox" action="{{ url_for('buscar') }}" role="search">
+        {{ icon('search') }}
+        <input type="search" name="q" id="search-input" placeholder="Artistas, lugares, eventos" autocomplete="off" aria-label="Buscar">
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">{{ icon('close') }}</button>
+      </form>
+      <div id="search-results" class="results" aria-live="polite"></div>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-saved" class="sheet sheet--side" aria-label="Eventos guardados">
+    <div class="sheet__panel">
+      <div class="sheet__head">
+        <h2 class="sheet__title">Guardados</h2>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">{{ icon('close') }}</button>
+      </div>
+      <div id="saved-list" class="saved-list"></div>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-zoom" class="lightbox" aria-label="Imagen ampliada">
+    <button type="button" class="icon-btn lightbox__x" data-close aria-label="Cerrar">{{ icon('close') }}</button>
+    <figure><img id="zoom-img" alt=""><figcaption id="zoom-cap"></figcaption></figure>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>window.ATELIER = {{ boot|tojson }};</script>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

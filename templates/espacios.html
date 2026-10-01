@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import space_card %}
+{% block title %}Espacios{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Espacios</h1>
+  <p class="lead">Lugares que impulsan el arte.</p>
+</section>
+
+<section class="shell js-filterable" data-empty="No hay espacios de ese tipo todavía. Prueba con otro.">
+  <div class="filterbar">
+    <div class="chips" role="group" aria-label="Filtrar por tipo de espacio">
+      <button type="button" class="chip chip--btn is-on" data-value="todo" style="--c: var(--ink)" aria-pressed="true">Todo</button>
+      {% for t in site.space_types %}
+      <button type="button" class="chip chip--btn" data-value="{{ t|norm }}" style="--c: var(--c-espacios)" aria-pressed="false"><i class="chip__dot"></i>{{ t }}</button>
+      {% endfor %}
+    </div>
+    <label class="filter-q">{{ icon('search', 18) }}<input type="search" class="js-filter-q" placeholder="Buscar espacios" aria-label="Buscar espacios"></label>
+  </div>
+  <div class="sgrid sgrid--list">
+    {% for s in spaces %}{{ space_card(s) }}{% endfor %}
+  </div>
+  <p class="empty" hidden></p>
+</section>
+
+<section class="shell section">
+  <div class="closing closing--soft">
+    <h2 class="h2">Tu espacio puede impulsar talento</h2>
+    <p class="closing__text">Una cafetería, un hotel o una tienda pueden ser el lugar donde un artista muestra su trabajo por primera vez.</p>
+    <div class="closing__actions"><button class="btn js-collab" type="button" data-mode="propose">Proponer una colaboración</button></div>
+  </div>
+</section>
+{% endblock %}

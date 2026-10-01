@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}No encontramos esta página{% endblock %}
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Este punto no está en el mapa</h1>
+  <p class="lead">La página que buscas no existe o cambió de lugar.</p>
+  <div class="actions"><a class="btn" href="{{ url_for('home') }}">Volver al inicio</a><a class="btn btn--ghost" href="{{ url_for('mapa') }}">Abrir el mapa</a></div>
+</section>
+{% endblock %}

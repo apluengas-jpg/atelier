@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import chip, event_card, artist_card, space_card %}
+{% block title %}Qué está pasando en Metepec{% endblock %}
+
+{% block content %}
+
+{# ------------------------------------------------------------------ HERO #}
+<section class="hero shell">
+  <div class="hero__copy">
+    <h1 class="display hero__title">{{ site.hero_title }}</h1>
+    <p class="lead">{{ site.hero_sub }}</p>
+    <form class="hero__search" action="{{ url_for('buscar') }}" role="search">
+      {{ icon('search', 20) }}
+      <input type="search" name="q" placeholder="Busca un artista, un lugar o un plan" aria-label="Buscar en Atelier">
+      <button class="btn btn--sm" type="submit">Buscar</button>
+    </form>
+    <div class="chips chips--hero">
+      {% for key in disciplines %}
+      <a class="chip chip--link" style="--c: {{ categories[key].color }}" href="{{ url_for('eventos', cat=key) }}"><i class="chip__dot"></i>{{ categories[key].label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# Collage: artista + espacio + persona unidos por una ruta. Es la idea de Atelier en una imagen. #}
+  <div class="hero__visual">
+    <div class="collage">
+      <a class="collage__arch" href="{{ url_for('evento', slug=hero_event.slug) }}" aria-label="Evento destacado: {{ hero_event.title }}">
+        <img src="{{ img(hero_event.image, hero_event.category, hero_event.slug) }}" alt="">
+      </a>
+      <a class="collage__square" href="{{ url_for('artista', slug=hero_artist.slug) }}" aria-label="Artista: {{ hero_artist.name }}">
+        <img src="{{ img(hero_artist.image, hero_artist.category, hero_artist.slug) }}" alt="">
+      </a>
+      <a class="collage__circle" href="{{ url_for('espacio', slug=hero_space.slug) }}" aria-label="Espacio: {{ hero_space.name }}">
+        <img src="{{ img(hero_space.image, 'espacio', hero_space.slug) }}" alt="">
+      </a>
+      <svg class="collage__route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <mask id="route-mask"><path class="collage__reveal" d="M18,56 C30,90 68,88 84,68 C86,90 66,99 50,93 C34,90 14,78 18,56" pathLength="1"/></mask>
+        </defs>
+        <path class="collage__dash" mask="url(#route-mask)" d="M18,56 C30,90 68,88 84,68 C86,90 66,99 50,93 C34,90 14,78 18,56"/>
+      </svg>
+      <span class="ptag ptag--artist" style="left:18%;top:56%">Artista</span>
+      <span class="ptag ptag--space" style="left:84%;top:68%">Espacio</span>
+      <span class="ptag ptag--you" style="left:50%;top:93%">Tú</span>
+    </div>
+  </div>
+</section>
+
+{# -------------------------------------------------------- ¿QUÉ BUSCAS? #}
+<section class="shell section" aria-labelledby="que-buscas">
+  <h2 class="h2" id="que-buscas">¿Qué buscas?</h2>
+  <div class="paths">
+    <a class="path path--descubrir" href="{{ url_for('eventos') }}">
+      <span class="path__txt">
+        <span class="path__name">Descubrir</span>
+        <span class="path__desc">Quiero encontrar qué hacer.</span>
+      </span>
+      <span class="path__art"><img src="{{ img(hero_event.image, hero_event.category, hero_event.slug) }}" alt=""></span>
+      <span class="path__go">{{ icon('arrow') }}</span>
+    </a>
+    <button class="path path--crear js-collab" type="button" data-mode="join">
+      <span class="path__txt">
+        <span class="path__name">Crear</span>
+        <span class="path__desc">Soy artista y quiero formar parte.</span>
+      </span>
+      <span class="path__art"><img src="{{ img(hero_artist.image, hero_artist.category, hero_artist.slug) }}" alt=""></span>
+      <span class="path__go">{{ icon('arrow') }}</span>
+    </button>
+    <button class="path path--colaborar js-collab" type="button" data-mode="propose">
+      <span class="path__txt">
+        <span class="path__name">Colaborar</span>
+        <span class="path__desc">Tengo un espacio y quiero crear algo.</span>
+      </span>
+      <span class="path__art"><img src="{{ img(hero_space.image, 'espacio', hero_space.slug) }}" alt=""></span>
+      <span class="path__go">{{ icon('arrow') }}</span>
+    </button>
+  </div>
+</section>
+
+{# ------------------------------------------------- EVENTOS DESTACADOS #}
+<section class="shell section" aria-labelledby="destacados">
+  <div class="section__head">
+    <h2 class="h2" id="destacados">Eventos destacados</h2>
+    <a class="textlink" href="{{ url_for('eventos') }}">Ver todos los eventos {{ icon('arrow', 18) }}</a>
+  </div>
+  <div class="featgrid">
+    {% for e in featured %}
+      {{ event_card(e, 'hero' if loop.first else 'wide') }}
+    {% endfor %}
+  </div>
+</section>
+
+{# ---------------------------------------------------- PRÓXIMOS EVENTOS #}
+<section class="section section--tint" aria-labelledby="proximos">
+  <div class="shell">
+    <div class="section__head">
+      <h2 class="h2" id="proximos">Próximos eventos</h2>
+      <a class="textlink" href="{{ url_for('mapa') }}">Verlos en el mapa {{ icon('arrow', 18) }}</a>
+    </div>
+    <div class="rail">
+      {% for e in upcoming %}{{ event_card(e) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ------------------------------------------------------ MAPA (marca) #}
+<section class="mapband" aria-labelledby="mapa-t">
+  <div class="shell mapband__in">
+    <div class="mapband__copy">
+      <h2 class="display mapband__title" id="mapa-t">{{ site.concept }}</h2>
+      <p class="mapband__lead">Cada punto es una oportunidad: un artista que necesita un lugar, un lugar que necesita contenido y alguien que busca qué hacer.</p>
+      <p class="equation" aria-label="Artistas más espacios más eventos igual a oportunidades">
+        <span>Artistas</span><b>+</b><span>Espacios</span><b>+</b><span>Eventos</span><b>=</b><span class="equation__res">Oportunidades</span>
+      </p>
+      <a class="btn btn--light" href="{{ url_for('mapa') }}">Abrir el mapa cultural {{ icon('arrow', 18) }}</a>
+    </div>
+    <div class="mapstage mapstage--mini" data-map data-endpoint="{{ url_for('api_puntos') }}" data-zoom="14" data-wheel="off">
+      <div class="mapstage__canvas"></div>
+      <article class="mapcard" hidden></article>
+    </div>
+  </div>
+</section>
+
+{# ------------------------------------------------- ARTISTAS DESTACADOS #}
+<section class="shell section" aria-labelledby="art-t">
+  <div class="section__head">
+    <div>
+      <h2 class="h2" id="art-t">Artistas destacados</h2>
+      <p class="sub">Talento local que merece ser visto.</p>
+    </div>
+    <a class="textlink" href="{{ url_for('artistas') }}">Ver todos los artistas {{ icon('arrow', 18) }}</a>
+  </div>
+  <div class="agrid">
+    {% for a in artists %}{{ artist_card(a) }}{% endfor %}
+  </div>
+</section>
+
+{# -------------------------------------------------- ESPACIOS DESTACADOS #}
+<section class="shell section" aria-labelledby="esp-t">
+  <div class="section__head">
+    <div>
+      <h2 class="h2" id="esp-t">Espacios destacados</h2>
+      <p class="sub">Lugares que impulsan el arte.</p>
+    </div>
+    <a class="textlink" href="{{ url_for('espacios') }}">Ver todos los espacios {{ icon('arrow', 18) }}</a>
+  </div>
+  <div class="sgrid">
+    {% for s in spaces %}{{ space_card(s, big=loop.first) }}{% endfor %}
+  </div>
+</section>
+
+{# ------------------------------------------------------------- CIERRE #}
+<section class="shell section">
+  <div class="closing">
+    <h2 class="display closing__title">{{ site.statement_title }}</h2>
+    <p class="closing__text">{{ site.statement }}</p>
+    <div class="closing__actions">
+      <a class="btn" href="{{ url_for('atelier') }}">Conocer Atelier</a>
+      <button class="btn btn--ghost js-collab" type="button" data-mode="propose">Proponer una colaboración</button>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='vendor/leaflet/leaflet.css') }}">{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/leaflet/leaflet.js') }}"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+{% endblock %}

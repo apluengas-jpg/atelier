@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "noche-de-barro-y-luz", "title": "Noche de barro y luz", "category": "artes-plasticas",
+    "format": "Exposición", "artist": "mateo-ibarra", "space": "patio-siete",
+    "date": "2026-10-03", "time": "19:00", "access": "Entrada libre", "featured": true, "image": null,
+    "description": "Una exposición de piezas de barro iluminadas con luz cálida. Mateo Ibarra presenta esculturas que parten de la tradición alfarera y llegan a formas nuevas. La noche incluye recorrido con el artista y una conversación abierta al público."
+  },
+  {
+    "slug": "marea-baja-sesion-acustica", "title": "Marea baja: sesión acústica", "category": "musica",
+    "format": "Concierto", "artist": "los-marea", "space": "azotea-diez",
+    "date": "2026-10-09", "time": "20:30", "access": "Cupo limitado", "featured": true, "image": null,
+    "description": "Los Marea tocan las canciones de su EP en versión acústica, al atardecer, con el centro de Metepec de fondo. Formato íntimo, guitarras y voces, sin prisa."
+  },
+  {
+    "slug": "muro-vivo", "title": "Muro vivo", "category": "graffiti",
+    "format": "Mural en vivo", "artist": "colectivo-respira", "space": "la-fabrica-chica",
+    "date": "2026-10-10", "time": "12:00", "access": "Entrada libre", "featured": true, "image": null,
+    "description": "Colectivo Respira pinta un mural de gran formato en el patio de La Fábrica Chica mientras el público recorre el proceso. Habrá música de fondo, café y un espacio para que las infancias pinten un muro propio."
+  },
+  {
+    "slug": "paisajes-de-agua", "title": "Paisajes de agua", "category": "arte-visual",
+    "format": "Exposición", "artist": "nuria-salcedo", "space": "casa-nogal",
+    "date": "2026-10-15", "time": "18:00", "access": "Entrada libre", "featured": false, "image": null,
+    "description": "Veinte acuarelas de valle y de interior cuelgan en los muros de Casa Nogal. Nuria Salcedo estará presente para conversar sobre su proceso mientras tomas un café."
+  },
+  {
+    "slug": "sabado-lila-en-mesa-cardenal", "title": "Sábado Lila en Mesa Cardenal", "category": "musica",
+    "format": "Cena con música", "artist": "sabado-lila", "space": "mesa-cardenal",
+    "date": "2026-10-17", "time": "21:00", "access": "Con reservación", "featured": false, "image": null,
+    "description": "Un trío de jazz y soul acompaña un menú de temporada pensado junto al restaurante. La música empieza con el segundo tiempo y crece con la noche."
+  },
+  {
+    "slug": "territorios-internos", "title": "Territorios internos", "category": "arte-visual",
+    "format": "Exposición individual", "artist": "lia-torres", "space": "patio-siete",
+    "date": "2026-10-22", "time": "19:00", "access": "Entrada libre", "featured": true, "image": null,
+    "description": "Primera exposición individual de Lia Torres: doce óleos sobre paisajes interiores y recuerdos de casa. La muestra abre con una charla corta y brindis de inauguración."
+  },
+  {
+    "slug": "hilos-que-cuentan", "title": "Hilos que cuentan", "category": "artes-plasticas",
+    "format": "Instalación", "artist": "ana-paula-vela", "space": "hilo-y-barro",
+    "date": "2026-10-24", "time": "17:00", "access": "Entrada libre", "featured": false, "image": null,
+    "description": "Ana Paula Vela suspende hilo, manta y teñidos naturales entre los estantes de la tienda. La instalación cambia con la luz de la tarde y se puede recorrer con calma."
+  },
+  {
+    "slug": "tinta-en-la-terraza", "title": "Tinta en la terraza", "category": "graffiti",
+    "format": "Pintura en vivo", "artist": "tinta-nomada", "space": "hotel-barrio-alto",
+    "date": "2026-10-29", "time": "17:30", "access": "Entrada libre", "featured": false, "image": null,
+    "description": "Tinta Nómada pinta lienzos en vivo en la terraza del hotel mientras cae la tarde. Al final, las piezas quedan expuestas en el lobby durante todo el mes."
+  },
+  {
+    "slug": "taller-de-modelado-en-barro", "title": "Taller de modelado en barro", "category": "artes-plasticas",
+    "format": "Taller", "artist": "mateo-ibarra", "space": "cafe-solana",
+    "date": "2026-11-07", "time": "11:00", "access": "Cupo limitado", "featured": false, "image": null,
+    "description": "Dos horas de modelado con Mateo Ibarra en la mesa larga de Café Solana. No hace falta experiencia: el barro y los materiales van incluidos."
+  },
+  {
+    "slug": "indie-en-el-barrio", "title": "Indie en el barrio", "category": "musica",
+    "format": "Concierto", "artist": "los-marea", "space": "la-fabrica-chica",
+    "date": "2026-11-14", "time": "20:00", "access": "Cupo limitado", "featured": false, "image": null,
+    "description": "Los Marea cierran su ciclo con un concierto en sala completa. Habrá invitadas y invitados de la escena local y el mural del Colectivo Respira como fondo."
+  }
+]

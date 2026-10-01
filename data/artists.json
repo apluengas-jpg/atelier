@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "lia-torres", "name": "Lia Torres", "category": "arte-visual",
+    "discipline": "Pintura", "style": "Arte contemporáneo", "featured": true,
+    "tagline": "Óleo y color en capas sobre memoria, casa y territorio.",
+    "bio": "Pintora que trabaja con capas translúcidas de óleo para construir paisajes internos. Su obra parte de fotografías familiares y de los colores de las paredes de su barrio. Ha expuesto de forma colectiva y prepara su primera individual.",
+    "image": null,
+    "portfolio": [ {"title": "Casa abierta"}, {"title": "Ventana de octubre"}, {"title": "Territorio I"}, {"title": "Territorio II"}, {"title": "Tarde en el patio"}, {"title": "Sin título"} ],
+    "projects": [
+      {"year": "2026", "title": "Territorios internos", "text": "Serie de 12 óleos sobre lienzo, en preparación para exposición individual."},
+      {"year": "2025", "title": "Casa abierta", "text": "Intervención pictórica en un patio doméstico, abierta al público durante un fin de semana."}
+    ],
+    "contact": {"instagram": "@lia.torres.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "los-marea", "name": "Los Marea", "category": "musica",
+    "discipline": "Música", "style": "Indie", "featured": true,
+    "tagline": "Guitarras brillantes y letras que se escuchan mejor de noche.",
+    "bio": "Cuarteto de indie en español formado en Toluca y Metepec. Suenan a playlist de madrugada: guitarras limpias, sintetizadores suaves y letras sobre irse y volver. Buscan espacios íntimos para tocar sus canciones.",
+    "image": null,
+    "portfolio": [ {"title": "Ensayo abierto"}, {"title": "Portada del EP"}, {"title": "Cartel de gira"}, {"title": "Sesión en azotea"} ],
+    "projects": [
+      {"year": "2026", "title": "Marea baja", "text": "EP de cinco canciones y ciclo de sesiones acústicas en espacios de Metepec."},
+      {"year": "2025", "title": "Primer sencillo", "text": "Lanzamiento con presentación en vivo y video grabado en barrio."}
+    ],
+    "contact": {"instagram": "@losmarea.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "colectivo-respira", "name": "Colectivo Respira", "category": "graffiti",
+    "discipline": "Graffiti", "style": "Arte urbano", "featured": true,
+    "tagline": "Muros grandes, color suave y mensajes que dan aire a la calle.",
+    "bio": "Colectivo de cuatro personas que pinta murales con paletas apagadas y letras redondeadas. Trabajan con vecinos, negocios y escuelas. Su lema es que un muro también puede ser un lugar para respirar.",
+    "image": null,
+    "portfolio": [ {"title": "Muro de la esquina"}, {"title": "Letras suaves"}, {"title": "Boceto de mural"}, {"title": "Pintura en proceso"}, {"title": "Detalle de color"} ],
+    "projects": [
+      {"year": "2026", "title": "Muro vivo", "text": "Pintura en vivo con público en un espacio cultural."},
+      {"year": "2024", "title": "Barrio en color", "text": "Cuatro fachadas intervenidas junto a vecinos."}
+    ],
+    "contact": {"instagram": "@colectivo.respira.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "mateo-ibarra", "name": "Mateo Ibarra", "category": "artes-plasticas",
+    "discipline": "Escultura", "style": "Barro contemporáneo", "featured": true,
+    "tagline": "Formas nuevas a partir de una tradición que ya conoces.",
+    "bio": "Escultor que trabaja el barro con técnicas de alfarería y las lleva a piezas contemporáneas de gran formato. Imparte talleres de modelado para principiantes y colabora con espacios que quieren integrar la cerámica a su ambiente.",
+    "image": null,
+    "portfolio": [ {"title": "Vasija en pausa"}, {"title": "Torre pequeña"}, {"title": "Esfera de barro"}, {"title": "Taller abierto"}, {"title": "Serie Arcos"} ],
+    "projects": [
+      {"year": "2026", "title": "Noche de barro y luz", "text": "Exposición de piezas iluminadas con luz cálida en galería."},
+      {"year": "2025", "title": "Taller de modelado", "text": "Sesiones mensuales para grupos pequeños."}
+    ],
+    "contact": {"instagram": "@mateo.ibarra.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "nuria-salcedo", "name": "Nuria Salcedo", "category": "arte-visual",
+    "discipline": "Pintura", "style": "Acuarela y paisaje", "featured": false,
+    "tagline": "Paisajes de agua, niebla y luz de ventana.",
+    "bio": "Acuarelista de formato mediano. Pinta paisajes de valle y de interior con lavados de color muy suaves. Le interesan los cafés y las casas como lugares donde la pintura puede acompañar a la gente sin exigir silencio.",
+    "image": null,
+    "portfolio": [ {"title": "Niebla en el valle"}, {"title": "Taza y ventana"}, {"title": "Agua quieta"}, {"title": "Cuaderno de campo"} ],
+    "projects": [
+      {"year": "2026", "title": "Paisajes de agua", "text": "Exposición de veinte acuarelas en una cafetería del centro."}
+    ],
+    "contact": {"instagram": "@nuria.salcedo.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "sabado-lila", "name": "Sábado Lila", "category": "musica",
+    "discipline": "Música", "style": "Jazz y soul", "featured": false,
+    "tagline": "Trío de cena: bajo cálido, voz cercana y mucho silencio entre notas.",
+    "bio": "Trío de jazz y soul pensado para restaurantes, hoteles y terrazas. Tocan repertorio propio y versiones que transforman. Su formato es flexible: pueden acompañar una cena o ser el plato principal de la noche.",
+    "image": null,
+    "portfolio": [ {"title": "Set de cena"}, {"title": "Ensayo en casa"}, {"title": "Cartel de temporada"} ],
+    "projects": [
+      {"year": "2026", "title": "Cenas con música", "text": "Ciclo de sábados en restaurantes con menú pensado en conjunto."}
+    ],
+    "contact": {"instagram": "@sabadolila.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "tinta-nomada", "name": "Tinta Nómada", "category": "graffiti",
+    "discipline": "Graffiti", "style": "Muralismo", "featured": false,
+    "tagline": "Murales que viajan y lienzos que se pintan frente al público.",
+    "bio": "Dúo de muralistas que combina spray, brocha y pintura acrílica. Les gusta trabajar en terrazas, patios y fachadas de hoteles pequeños, donde el mural cambia la forma de habitar el lugar.",
+    "image": null,
+    "portfolio": [ {"title": "Terraza"}, {"title": "Lienzo en vivo"}, {"title": "Ruta de muros"}, {"title": "Boceto en tinta"} ],
+    "projects": [
+      {"year": "2026", "title": "Tinta en la terraza", "text": "Serie de lienzos pintados en vivo en un hotel boutique."}
+    ],
+    "contact": {"instagram": "@tinta.nomada.demo", "via": "Representación Atelier"}
+  },
+  {
+    "slug": "ana-paula-vela", "name": "Ana Paula Vela", "category": "artes-plasticas",
+    "discipline": "Instalación", "style": "Arte textil", "featured": false,
+    "tagline": "Hilos, telas y sombras que cambian un espacio entero.",
+    "bio": "Artista textil que trabaja con hilo, manta y teñido natural. Sus instalaciones suspendidas transforman tiendas, vestíbulos y galerías. Le interesa el trabajo manual que cuenta historias de familia.",
+    "image": null,
+    "portfolio": [ {"title": "Hilos suspendidos"}, {"title": "Teñido de raíz"}, {"title": "Manta larga"}, {"title": "Detalle de trama"}, {"title": "Sombra de tela"} ],
+    "projects": [
+      {"year": "2026", "title": "Hilos que cuentan", "text": "Instalación textil dentro de una tienda de objetos hechos a mano."}
+    ],
+    "contact": {"instagram": "@anapaula.vela.demo", "via": "Representación Atelier"}
+  }
+]

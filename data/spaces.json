@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "casa-nogal", "name": "Casa Nogal", "type": "Cafetería", "featured": true,
+    "address": "Barrio de San Mateo", "lat": 19.2551, "lng": -99.6082, "capacity": 45,
+    "collab_types": ["Exposición", "Taller", "Música acústica"],
+    "description": "Cafetería en una casa con patio interior y muros claros. Recibe obra de formato mediano y sesiones tranquilas por la tarde.",
+    "hours": "Martes a domingo, 8:00 a 20:00 h", "image": null
+  },
+  {
+    "slug": "patio-siete", "name": "Patio Siete", "type": "Galería", "featured": true,
+    "address": "Centro", "lat": 19.2524, "lng": -99.6047, "capacity": 80,
+    "collab_types": ["Exposición", "Inauguración", "Escultura"],
+    "description": "Galería de dos salas alrededor de un patio con luz natural. Ideal para exposiciones individuales y para obra de gran formato.",
+    "hours": "Miércoles a domingo, 11:00 a 19:00 h", "image": null
+  },
+  {
+    "slug": "mesa-cardenal", "name": "Mesa Cardenal", "type": "Restaurante", "featured": false,
+    "address": "Barrio de Santiaguito", "lat": 19.2489, "lng": -99.6115, "capacity": 60,
+    "collab_types": ["Cena con música", "Arte en mesa", "Menú temático"],
+    "description": "Restaurante de cocina de temporada con un salón sin televisiones. Le interesa sumar música en vivo y arte en las paredes.",
+    "hours": "Martes a domingo, 13:00 a 23:00 h", "image": null
+  },
+  {
+    "slug": "hotel-barrio-alto", "name": "Hotel Barrio Alto", "type": "Hotel", "featured": false,
+    "address": "Barrio de San Miguel", "lat": 19.2571, "lng": -99.6011, "capacity": 70,
+    "collab_types": ["Mural", "Lobby expositivo", "Terraza"],
+    "description": "Hotel boutique con lobby amplio, terraza y muros disponibles para intervenciones. Busca obra que acompañe a huéspedes y visitantes locales.",
+    "hours": "Lobby abierto todos los días, 9:00 a 22:00 h", "image": null
+  },
+  {
+    "slug": "azotea-diez", "name": "Azotea Diez", "type": "Rooftop", "featured": true,
+    "address": "Centro", "lat": 19.2536, "lng": -99.6031, "capacity": 90,
+    "collab_types": ["Concierto", "DJ set", "Cine al aire libre"],
+    "description": "Rooftop con vista a las torres del centro y buena acústica para sets acústicos. Funciona mejor de jueves a sábado por la tarde-noche.",
+    "hours": "Jueves a sábado, 17:00 a 00:00 h", "image": null
+  },
+  {
+    "slug": "hilo-y-barro", "name": "Hilo y Barro", "type": "Tienda", "featured": false,
+    "address": "Barrio de San Francisco", "lat": 19.2497, "lng": -99.6019, "capacity": 30,
+    "collab_types": ["Instalación", "Pop-up", "Taller"],
+    "description": "Tienda de objetos hechos a mano con techos altos y vitrinas. Abierta a instalaciones temporales y a talleres de fin de semana.",
+    "hours": "Lunes a sábado, 10:00 a 19:00 h", "image": null
+  },
+  {
+    "slug": "la-fabrica-chica", "name": "La Fábrica Chica", "type": "Espacio cultural", "featured": true,
+    "address": "Barrio de San Jerónimo", "lat": 19.2589, "lng": -99.6089, "capacity": 150,
+    "collab_types": ["Mural", "Concierto", "Feria", "Residencia"],
+    "description": "Antigua bodega convertida en foro y taller. Patio grande para murales en vivo y sala interior para conciertos.",
+    "hours": "Viernes a domingo, 12:00 a 22:00 h", "image": null
+  },
+  {
+    "slug": "cafe-solana", "name": "Café Solana", "type": "Cafetería", "featured": false,
+    "address": "Barrio de La Asunción", "lat": 19.2462, "lng": -99.6058, "capacity": 35,
+    "collab_types": ["Taller", "Exposición pequeña", "Lectura"],
+    "description": "Cafetería de barrio con mesa larga central. Buen lugar para talleres pequeños y muestras íntimas.",
+    "hours": "Todos los días, 8:00 a 21:00 h", "image": null
+  }
+]

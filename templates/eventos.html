@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import event_card %}
+{% block title %}Eventos en Metepec{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Eventos</h1>
+  <p class="lead">Exposiciones, conciertos, murales y talleres que suceden en Metepec.</p>
+</section>
+
+<section class="shell js-filterable" data-empty="No encontramos eventos con esos filtros. Prueba otra categoría o borra la búsqueda.">
+  <div class="filterbar">
+    <div class="chips" role="group" aria-label="Filtrar por categoría">
+      <button type="button" class="chip chip--btn is-on" data-value="todo" style="--c: var(--ink)" aria-pressed="true">Todo</button>
+      {% for key in disciplines %}
+      <button type="button" class="chip chip--btn" data-value="{{ key }}" style="--c: {{ categories[key].color }}" aria-pressed="false"><i class="chip__dot"></i>{{ categories[key].label }}</button>
+      {% endfor %}
+    </div>
+    <label class="filter-q">{{ icon('search', 18) }}<input type="search" class="js-filter-q" placeholder="Buscar en eventos" aria-label="Buscar en eventos"></label>
+  </div>
+  <div class="egrid">
+    {% for e in events %}{{ event_card(e) }}{% endfor %}
+  </div>
+  <p class="empty" hidden></p>
+</section>
+{% endblock %}

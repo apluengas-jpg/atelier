@@ -1,0 +1,26 @@
+{
+  "name": "Atelier",
+  "concept": "El arte también tiene un mapa.",
+  "hero_title": "¿Qué está pasando en Metepec?",
+  "hero_sub": "Descubre arte, música, espacios y experiencias cerca de ti.",
+  "statement_title": "Representamos talento. Creamos conexiones.",
+  "statement": "Atelier es una agencia de representación artística especializada en pintura, graffiti, artes plásticas y música. Nuestro objetivo es impulsar talento y crear conexiones entre artistas, espacios y audiencias.",
+  "disciplines": ["Pintura", "Graffiti", "Artes plásticas", "Música"],
+  "pillars": [
+    { "title": "Talento", "tone": "mauve", "text": "Acompañamos a artistas emergentes: portafolio, visibilidad y proyectos que crecen con ellos." },
+    { "title": "Espacios", "tone": "verde", "text": "Cafeterías, galerías, hoteles y tiendas se vuelven escenarios para que el arte suceda cerca de la gente." },
+    { "title": "Personas", "tone": "azul", "text": "Quien vive o visita Metepec encuentra qué hacer hoy, esta semana o este mes." }
+  ],
+  "how": [
+    { "title": "Conocemos al artista", "text": "Escuchamos su obra, su historia y lo que busca hacer a continuación." },
+    { "title": "Abrimos el espacio", "text": "Acercamos el proyecto a un lugar que tiene sentido para la obra y para su público." },
+    { "title": "Producimos el encuentro", "text": "Cuidamos la curaduría, la logística y la difusión para que el evento se sienta propio del lugar." }
+  ],
+  "contact": {
+    "email": "hola@atelier.demo",
+    "instagram": "@atelier.demo",
+    "city": "Metepec, Estado de México"
+  },
+  "space_types": ["Cafetería", "Galería", "Restaurante", "Hotel", "Rooftop", "Tienda", "Espacio cultural"],
+  "collab_types": ["Exposición", "Concierto", "Mural", "Taller", "Instalación", "Otro"]
+}

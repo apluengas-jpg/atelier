@@ -1,0 +1,8 @@
+{
+  "musica":          { "label": "Música",          "color": "#46607E", "blurb": "Conciertos, sesiones acústicas y noches en vivo." },
+  "arte-visual":     { "label": "Arte visual",     "color": "#B98CA0", "blurb": "Pintura, ilustración y exposiciones." },
+  "graffiti":        { "label": "Graffiti",        "color": "#6E8C7E", "blurb": "Murales, arte urbano y pintura en vivo." },
+  "artes-plasticas": { "label": "Artes plásticas", "color": "#B39C82", "blurb": "Escultura, barro, textil e instalación." },
+  "eventos":         { "label": "Eventos",         "color": "#9C97C4", "blurb": "Todo lo que sucede este mes." },
+  "espacios":        { "label": "Espacios",        "color": "#8FA4B5", "blurb": "Lugares que impulsan el arte." }
+}

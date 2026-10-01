@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% from 'partials/_macros.html' import artist_card %}
+{% block title %}Artistas{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Artistas</h1>
+  <p class="lead">Talento local que merece ser visto.</p>
+</section>
+
+<section class="shell js-filterable" data-empty="No hay artistas con esos filtros. Prueba otra disciplina.">
+  <div class="filterbar">
+    <div class="chips" role="group" aria-label="Filtrar por disciplina">
+      <button type="button" class="chip chip--btn is-on" data-value="todo" style="--c: var(--ink)" aria-pressed="true">Todo</button>
+      {% for key in disciplines %}
+      <button type="button" class="chip chip--btn" data-value="{{ key }}" style="--c: {{ categories[key].color }}" aria-pressed="false"><i class="chip__dot"></i>{{ categories[key].label }}</button>
+      {% endfor %}
+    </div>
+    <label class="filter-q">{{ icon('search', 18) }}<input type="search" class="js-filter-q" placeholder="Buscar artistas" aria-label="Buscar artistas"></label>
+  </div>
+  <div class="agrid agrid--list">
+    {% for a in artists %}{{ artist_card(a) }}{% endfor %}
+  </div>
+  <p class="empty" hidden></p>
+</section>
+
+<section class="shell section">
+  <div class="closing closing--soft">
+    <h2 class="h2">¿Eres artista?</h2>
+    <p class="closing__text">Cuéntanos qué haces. Atelier te ayuda a que tu obra llegue a espacios y públicos de Metepec.</p>
+    <div class="closing__actions"><button class="btn js-collab" type="button" data-mode="join">Quiero formar parte</button></div>
+  </div>
+</section>
+{% endblock %}

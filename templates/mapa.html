@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% from 'partials/_icons.html' import icon %}
+{% block title %}Mapa cultural de Metepec{% endblock %}
+
+{% block content %}
+<section class="shell pagehead">
+  <h1 class="display pagehead__title">Mapa cultural de Metepec</h1>
+  <p class="lead">Eventos y espacios en un solo mapa. Se actualiza cada mes: elige el mes y la categoría que quieras explorar.</p>
+</section>
+
+<section class="shell mapwrap" aria-label="Mapa interactivo">
+  <div class="mapbar">
+    <div class="chips" id="map-cats" role="group" aria-label="Categorías">
+      <button type="button" class="chip chip--btn is-on" data-cat="todo" style="--c: var(--ink)" aria-pressed="true">Todo</button>
+      {% for key, c in categories.items() %}
+      <button type="button" class="chip chip--btn" data-cat="{{ key }}" style="--c: {{ c.color }}" aria-pressed="false"><i class="chip__dot"></i>{{ c.label }}</button>
+      {% endfor %}
+    </div>
+    <div class="seg" id="map-months" role="group" aria-label="Mes">
+      {% for m in months %}
+      <button type="button" data-month="{{ m }}" aria-pressed="{{ 'true' if m == current_month else 'false' }}" class="{{ 'is-on' if m == current_month }}">{{ m|mes_label }}</button>
+      {% endfor %}
+      <button type="button" data-month="todos" aria-pressed="false">Todos</button>
+    </div>
+  </div>
+
+  <div class="mapgrid">
+    <div class="mapstage mapstage--full" id="mapstage" data-map data-page data-endpoint="{{ url_for('api_puntos') }}" data-zoom="15">
+      <div class="mapstage__canvas"></div>
+      <article class="mapcard" hidden></article>
+    </div>
+    <aside class="maplist" aria-label="Lugares y eventos en el mapa">
+      <p class="maplist__count" id="map-count" aria-live="polite"></p>
+      <div id="map-list" class="maplist__items"></div>
+      <p class="maplist__key"><span class="key key--event"></span>Evento <span class="key key--space"></span>Espacio</p>
+    </aside>
+  </div>
+</section>
+{% endblock %}
+
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='vendor/leaflet/leaflet.css') }}">{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/leaflet/leaflet.js') }}"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+{% endblock %}
